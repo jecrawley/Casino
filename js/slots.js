@@ -6,28 +6,30 @@ function run (reels) {
     reelCount = reels;
     stopped = 0;
     var reel;
+
     for (var i = 0; i < reels; i++) {
         reel = "reel" + i
-        run[reel] = new start(reel);
+        run[reel] = new activeReel(reel);
     }
 }
 
-function start (reel) {
+function activeReel (reel) {
     var face = 0;
     this.getFace = function () { return face; }
     this.setFace = function (val) { face = val;}
-    this.spin = setInterval(changeFace, 1000, reel);
+    this.spin = setInterval(changeFace, 1000);
+
+    function changeFace () {
+        var index = eval("run." + reel).getFace();
+        var image = document.getElementById(reel);
+        var colors = ["#A22", "#2A2", "#22A"];
+        image.style.borderColor = colors[index];
+        eval("run." + reel).setFace(++index % 3);
+    }
+
 }
 
-function changeFace (reel) {
-    var index = eval("run." + reel).getFace();
-    var image = document.getElementById(reel);
-    var colors = ["#A22", "#2A2", "#22A"];
-    image.style.borderColor = colors[index];
-    eval("run." + reel).setFace(++index % 3);
-}
-
-function stopImageCycle (reel) {
+function stopChangeFace (reel) {
     stopped++;
     clearInterval(eval("run." + reel).spin);
     if (stopped === reelCount) {
