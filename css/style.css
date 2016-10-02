@@ -1,6 +1,12 @@
+/* Some color codes used http://htmlcolorcodes.com/ for reference */
+
 img, button {
     border-style: solid;
     border-radius: 10px;
+}
+
+p, button {
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 
 img {
@@ -11,7 +17,6 @@ img {
 }
 
 p {
-    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
     font-size: 40px;
     font-weight: bold;
     margin-top: 15px;
