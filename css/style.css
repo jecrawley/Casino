@@ -17,6 +17,8 @@ p {
     margin-top: 25px;
     margin-bottom: 6px;
     color: #DDD;
+    /* Text stroke from
+    https://css-tricks.com/adding-stroke-to-web-text/ */
     -webkit-text-stroke-width: 0.5pt;
     -webkit-text-stroke-color: #333;
 }
@@ -41,6 +43,8 @@ button, #slots {
 }
 
 div {
+    /* Centering an image from
+    https://www.w3.org/Style/Examples/007/center.en.html */
     display: flex;
     align-items: center;
     justify-content: center;

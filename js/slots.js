@@ -42,6 +42,8 @@ function activeReel (reel) {
         var colors = ["#A22", "#2A2", "#22A", "#AA2", "#2AA", "#A2A", "#222", "#AAA"];
 
         image.style.borderColor = colors[index];
+        //Idea to use eval from Stack Overflow
+        //http://stackoverflow.com/questions/10953303/javascript-interpret-string-as-object-reference
         eval("run." + reel).setFace(++index % colors.length);
     }
 
