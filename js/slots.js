@@ -20,10 +20,11 @@ function run (reels) {
 }
 
 function setBet (amount) {
-    bet = amount;
-    var betLabel = document.getElementById("bet");
 
     if (!isRunning) {
+        bet = amount;
+        var betLabel = document.getElementById("bet");
+
         betLabel.innerHTML = "Bet: $" + bet;
     }
 }
