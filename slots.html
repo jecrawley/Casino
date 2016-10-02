@@ -5,8 +5,14 @@
         <title>Slot Machine</title>
         <link type="text/css" rel="stylesheet" href="css/style.css">
     </head>
-    <body background="http://www.freelargeimages.com/wp-content/uploads/2016/06/Background-4.jpg">
-        <p id="money">Money: $1000</p>
+    <body background="background.jpg">
+        <div>
+            <p id="money">Money: $1000</p>
+
+        </div>
+        <div>
+            <p id="bet">Bet: $0</p>
+        </div>
         <div>
             <div id="slots">
                 <img id="reel0" src="http://www.freeiconspng.com/uploads/turtle-png-24.png">
@@ -14,10 +20,19 @@
                 <img id="reel2" src="http://www.freeiconspng.com/uploads/turtle-png-24.png">
             </div>
         </div>
-        <button type="button" onclick="stopChangeFace('reel0')">Stop Reel 1</button>
-        <button type="button" onclick="stopChangeFace('reel1')">Stop Reel 2</button>
-        <button type="button" onclick="stopChangeFace('reel2')">Stop Reel 3</button>
-        <button type="button" onclick="run(3)">Spin</button>
+        <div>
+            <button type="button" onclick="run(3)" id="spin-button">Spin</button>
+        </div>
+        <div class="controls">
+            <button type="button" onclick="setBet(10)">Bet $10</button>
+            <button type="button" onclick="setBet(50)">Bet $50</button>
+            <button type="button" onclick="setBet(100)">Bet $100</button>
+        </div>
+        <div class="controls">
+            <button type="button" onclick="stopChangeFace('reel0')">Stop Reel 1</button>
+            <button type="button" onclick="stopChangeFace('reel1')">Stop Reel 2</button>
+            <button type="button" onclick="stopChangeFace('reel2')">Stop Reel 3</button>
+        </div>
         <script type="text/javascript" src="js/slots.js"></script>
     </body>
 </html>

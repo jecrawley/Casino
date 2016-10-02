@@ -1,10 +1,39 @@
-img {
-    margin: 5px;
+img, button {
     border-style: solid;
+    border-radius: 10px;
+}
+
+img {
+    width: 150px;
+    margin: 5px;
     border-color: #DDD;
     background-color: #D3D0CC;
-    border-radius: 10px;
-    width: 150px;
+}
+
+p {
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 25px;
+    margin-bottom: 6px;
+    color: #DDD;
+    -webkit-text-stroke-width: 0.5pt;
+    -webkit-text-stroke-color: #333;
+}
+
+p:hover {
+    font-size: 45px;
+    margin-bottom: 0px;
+
+}
+
+button {
+    height: 30px;
+    color: #DDD;
+}
+button, #slots {
+    background-color: #333;
+    border-color: #A22;
 }
 
 div {
@@ -13,16 +42,25 @@ div {
     justify-content: center;
 }
 
-p {
-    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+.controls button {
+    margin: 7px;
+    width: 100px;
+}
+
+#spin-button {
+    margin-top: 10px;
+    margin-bottom: 7px;
+    width: 328px;
 }
 
 #slots {
-    margin-top: 10%;
+    margin-top: 10px;
     border-style: solid;
-    border-color: #F1ED08;
     border-radius: 10px;
     padding: 50px;
-    background-color: #494942;
     max-width: 500px;
+}
+
+#bet, #money {
+    display: block;
 }
