@@ -4,7 +4,7 @@ img, button {
 }
 
 img {
-    width: 150px;
+    width: 120px;
     margin: 5px;
     border-color: #DDD;
     background-color: #D3D0CC;
@@ -30,6 +30,10 @@ p:hover {
 button {
     height: 30px;
     color: #DDD;
+}
+
+button:hover {
+    background-color: #222;
 }
 button, #slots {
     background-color: #333;
@@ -59,8 +63,4 @@ div {
     border-radius: 10px;
     padding: 50px;
     max-width: 500px;
-}
-
-#bet, #money {
-    display: block;
 }

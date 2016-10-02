@@ -11,23 +11,27 @@ function run (reels) {
         reelCount = reels;
         stopped = 0;
         var reel;
+
         for (let i = 0; i < reels; i++) {
             reel = "reel" + i;
-            run[reel] = new activeReel(reel);
+            run[reel] =  new activeReel(reel);
         }
     }
 }
 
 function setBet (amount) {
+    bet = amount;
+    var betLabel = document.getElementById("bet");
+
     if (!isRunning) {
-        bet = amount;
-        var betLabel = document.getElementById("bet");
         betLabel.innerHTML = "Bet: $" + bet;
     }
 }
 
 function activeReel (reel) {
-    var face = 0;
+
+    var face = Math.floor(Math.random() * 8);
+
     this.getFace = function () { return face; }
     this.setFace = function (val) { face = val;}
     this.spin = setInterval(changeFace, 250);
@@ -36,6 +40,7 @@ function activeReel (reel) {
         var index = eval("run." + reel).getFace();
         var image = document.getElementById(reel);
         var colors = ["#A22", "#2A2", "#22A", "#AA2", "#2AA", "#A2A", "#222", "#AAA"];
+
         image.style.borderColor = colors[index];
         eval("run." + reel).setFace(++index % colors.length);
     }
@@ -43,7 +48,9 @@ function activeReel (reel) {
 }
 
 function stopChangeFace (reel) {
+
     stopped++;
+
     clearInterval(eval("run." + reel).spin);
     if (stopped === reelCount) {
         checkVictory();
@@ -51,11 +58,13 @@ function stopChangeFace (reel) {
 }
 
 function checkVictory () {
+
     moneyCount = document.getElementById("money");
     isRunning = false;
     var didWin = true;
     var thisReel;
     var nextReel;
+
     for (var i = 0; i < reelCount - 1; i++) {
         thisReel = eval("run.reel" + i).getFace();
         nextReel = eval("run.reel" + (i + 1)).getFace();
@@ -68,8 +77,8 @@ function checkVictory () {
 }
 
 function payout (didWin) {
-    money += (didWin) ? bet : -bet;
 
+    money += (didWin) ? bet : -bet;
     moneyCount.innerHTML = "Money: $" + money;
 
 }
