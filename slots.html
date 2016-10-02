@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Slot Machine</title>
+        <link type="text/css" rel="stylesheet" href="css/style.css">
+    </head>
+    <body background="http://www.freelargeimages.com/wp-content/uploads/2016/06/Background-4.jpg">
+        <p id="money">Money: $1000</p>
+        <div>
+            <div id="slots">
+                <img id="reel0" src="http://www.freeiconspng.com/uploads/turtle-png-24.png">
+                <img id="reel1" src="http://www.freeiconspng.com/uploads/turtle-png-24.png">
+                <img id="reel2" src="http://www.freeiconspng.com/uploads/turtle-png-24.png">
+            </div>
+        </div>
+        <button type="button" onclick="stopImageCycle('reel0')">Stop Reel 1</button>
+        <button type="button" onclick="stopImageCycle('reel1')">Stop Reel 2</button>
+        <button type="button" onclick="stopImageCycle('reel2')">Stop Reel 3</button>
+        <button type="button" onclick="run(3)">Spin</button>
+        <script type="text/javascript" src="js/slots.js"></script>
+    </body>
+</html>

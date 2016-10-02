@@ -1,0 +1,28 @@
+img {
+    margin: 5px;
+    border-style: solid;
+    border-color: #DDD;
+    background-color: #D3D0CC;
+    border-radius: 10px;
+    width: 150px;
+}
+
+div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+p {
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+}
+
+#slots {
+    margin-top: 10%;
+    border-style: solid;
+    border-color: #F1ED08;
+    border-radius: 10px;
+    padding: 50px;
+    background-color: #494942;
+    max-width: 500px;
+}
