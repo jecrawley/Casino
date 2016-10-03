@@ -1,41 +1,62 @@
-var stopped;
-var reelCount;
-var isRunning = false;
-var money = 1000;
-var bet;
+
+function main () {
+
+    var money = parseInt(sessionStorage.getItem("money"));
+    var moneyLabel = document.getElementById("money");
+    var bet = 0;
+    var reelCount;
+    var isRunning = false;
+    var stoppedReels = 0;
+
+    this.getStoppedReels = function () { return stoppedReels; }
+    this.setStoppedReels = function (reels) { stoppedReels = reels; }
+    this.getIsRunning = function () {return isRunning;}
+    this.setIsRunning = function (running) { isRunning = running; }
+    this.getReelCount = function () { return reelCount; }
+    this.setReelCount = function (reels) { reelCount = reels; }
+    this.getBet = function () { return bet; }
+    this.setBet = function (amount) {
+        if (!isRunning) {
+            bet = amount;
+
+            var betLabel = document.getElementById("bet");
+
+            betLabel.innerHTML = "Bet: $" + bet;
+        }
+    }
+
+    money = (isNaN(money)) ? 1000 : money;
+    sessionStorage.setItem("money", money);
+    moneyLabel.innerHTML = "Money: $" + money;
+}
 
 function run (reels) {
 
-    if (!isRunning && bet > 0) {
-        isRunning = true;
-        reelCount = reels;
-        stopped = 0;
+    if (!(getIsRunning()) && getBet() > 0) {
+
         var reel;
 
+        setIsRunning(true);
+        setReelCount(reels);
+        setStoppedReels(0);
+
         for (let i = 0; i < reels; i++) {
+
             reel = "reel" + i;
             run[reel] =  new activeReel(reel);
+
         }
-    }
-}
-
-function setBet (amount) {
-
-    if (!isRunning) {
-        bet = amount;
-        var betLabel = document.getElementById("bet");
-
-        betLabel.innerHTML = "Bet: $" + bet;
     }
 }
 
 function activeReel (reel) {
 
     var face = Math.floor(Math.random() * 8);
+    var spin = setInterval(changeFace, 250);
 
     this.getFace = function () { return face; }
     this.setFace = function (val) { face = val;}
-    this.spin = setInterval(changeFace, 250);
+    this.getSpin = function () { return spin; }
 
     function changeFace () {
         var index = eval("run." + reel).getFace();
@@ -52,19 +73,19 @@ function activeReel (reel) {
 
 function stopChangeFace (reel) {
 
-    stopped++;
+    stoppedReels = getStoppedReels();
+    setStoppedReels(stoppedReels + 1);
 
-    clearInterval(eval("run." + reel).spin);
-    if (stopped === reelCount) {
+    clearInterval(eval("run." + reel).getSpin());
+    if (getStoppedReels() === getReelCount()) {
         checkVictory();
     }
 }
 
 function checkVictory () {
 
-    moneyCount = document.getElementById("money");
-    isRunning = false;
     var didWin = true;
+    var reelCount = getReelCount();
     var thisReel;
     var nextReel;
 
@@ -76,12 +97,25 @@ function checkVictory () {
             break;
         }
     }
+
+    setIsRunning(false);
     payout(didWin);
 }
 
 function payout (didWin) {
 
-    money += (didWin) ? bet : -bet;
-    moneyCount.innerHTML = "Money: $" + money;
+    var money = parseInt(sessionStorage.getItem("money"));
+    var moneyLabel = document.getElementById("money");
+    var bet = getBet();
 
+    money += (didWin) ? bet : -bet;
+    sessionStorage.setItem("money", money);
+    moneyLabel.innerHTML = "Money: $" + money;
+
+}
+
+function backHome () {
+    if (!(getIsRunning())) {
+        return window.location = "index.html";
+    }
 }

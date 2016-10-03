@@ -6,9 +6,9 @@
         <link type="text/css" rel="stylesheet" href="css/style.css">
     </head>
 <!-- background from https://www.vecteezy.com/vector-art/109230-free-vector-casino-royale-background -->
-    <body background="images/background.jpg">
+    <body background="images/background.jpg" onload="main()">
         <div>
-            <p id="money">Money: $1000</p>
+            <p id="money"></p>
 
         </div>
         <div>
@@ -34,6 +34,9 @@
             <button type="button" onclick="stopChangeFace('reel0')">Stop Reel 1</button>
             <button type="button" onclick="stopChangeFace('reel1')">Stop Reel 2</button>
             <button type="button" onclick="stopChangeFace('reel2')">Stop Reel 3</button>
+        </div>
+        <div>
+            <button onclick="javascript:backHome();" id="home-button">Go Back</button>
         </div>
         <script type="text/javascript" src="js/slots.js"></script>
     </body>

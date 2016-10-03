@@ -60,7 +60,7 @@ div {
     width: 100px;
 }
 
-#spin-button {
+#spin-button, #home-button {
     margin-top: 10px;
     margin-bottom: 7px;
     width: 328px;
