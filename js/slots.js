@@ -1,5 +1,4 @@
-
-function main () {
+(function () {
 
     var money = parseInt(sessionStorage.getItem("money"));
     var moneyLabel = document.getElementById("money");
@@ -8,6 +7,9 @@ function main () {
     var isRunning = false;
     var stoppedReels = 0;
 
+    this.getMoney = function () { return money; }
+    this.setMoney = function (amount) { money = amount; }
+    this.getMoneyLabel = function () {return moneyLabel; }
     this.getStoppedReels = function () { return stoppedReels; }
     this.setStoppedReels = function (reels) { stoppedReels = reels; }
     this.getIsRunning = function () {return isRunning;}
@@ -25,14 +27,14 @@ function main () {
         }
     }
 
-    money = (isNaN(money)) ? 1000 : money;
     sessionStorage.setItem("money", money);
     moneyLabel.innerHTML = "Money: $" + money;
-}
+
+}());
 
 function run (reels) {
 
-    if (!(getIsRunning()) && getBet() > 0) {
+    if (!(getIsRunning()) && getBet() > 0 && getMoney() >= getBet()) {
 
         var reel;
 
@@ -104,18 +106,22 @@ function checkVictory () {
 
 function payout (didWin) {
 
-    var money = parseInt(sessionStorage.getItem("money"));
-    var moneyLabel = document.getElementById("money");
+    var money = getMoney();
+    var moneyLabel = getMoneyLabel();
     var bet = getBet();
 
     money += (didWin) ? bet : -bet;
+    setMoney(money);
     sessionStorage.setItem("money", money);
     moneyLabel.innerHTML = "Money: $" + money;
 
 }
 
 function backHome () {
+
     if (!(getIsRunning())) {
+
         return window.location = "index.html";
+
     }
 }

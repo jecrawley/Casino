@@ -1,11 +1,11 @@
 /* Some color codes used http://htmlcolorcodes.com/ for reference */
 
-img, button {
+img, button, input {
     border-style: solid;
     border-radius: 10px;
 }
 
-p, button {
+p, button, input {
     font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 
@@ -42,17 +42,24 @@ button {
 button:hover {
     background-color: #222;
 }
-button, #slots {
+
+button, input, #slots {
     background-color: #333;
     border-color: #A22;
 }
 
-div {
+.interface{
     /* Centering an image from
     https://www.w3.org/Style/Examples/007/center.en.html */
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+#money-form {
+    margin: 5px;
+    color: #DDD;
+    width: 432px;
 }
 
 .controls button {
@@ -72,4 +79,8 @@ div {
     border-radius: 10px;
     padding: 50px;
     max-width: 500px;
+}
+
+.tests {
+    display: none;
 }

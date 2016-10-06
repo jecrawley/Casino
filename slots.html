@@ -6,15 +6,15 @@
         <link type="text/css" rel="stylesheet" href="css/style.css">
     </head>
 <!-- background from https://www.vecteezy.com/vector-art/109230-free-vector-casino-royale-background -->
-    <body background="images/background.jpg" onload="main()">
-        <div>
+    <body background="images/background.jpg">
+        <div class="interface">
             <p id="money"></p>
 
         </div>
-        <div>
+        <div class="interface">
             <p id="bet">Bet: $0</p>
         </div>
-        <div>
+        <div class="interface">
             <div id="slots">
 <!-- reel image from http://www.freeiconspng.com/uploads/chess-icon-17.png -->
                 <img id="reel0" src="images/knight.png">
@@ -22,22 +22,28 @@
                 <img id="reel2" src="images/knight.png">
             </div>
         </div>
-        <div>
+        <div class="interface">
             <button type="button" onclick="run(3)" id="spin-button">Spin</button>
         </div>
-        <div class="controls">
+        <div class="controls interface">
             <button type="button" onclick="setBet(10)">Bet $10</button>
             <button type="button" onclick="setBet(50)">Bet $50</button>
             <button type="button" onclick="setBet(100)">Bet $100</button>
         </div>
-        <div class="controls">
+        <div class="controls interface">
             <button type="button" onclick="stopChangeFace('reel0')">Stop Reel 1</button>
             <button type="button" onclick="stopChangeFace('reel1')">Stop Reel 2</button>
             <button type="button" onclick="stopChangeFace('reel2')">Stop Reel 3</button>
         </div>
-        <div>
+        <div class="interface">
             <button onclick="javascript:backHome();" id="home-button">Go Back</button>
         </div>
+        <div class="tests">
+            <div id="qunit"></div>
+            <div id="qunit-fixture"></div>
+        </div>
         <script type="text/javascript" src="js/slots.js"></script>
+        <script src="https://code.jquery.com/qunit/qunit-2.0.1.js"></script>
+        <script src="js/slotsTest.js"></script>
     </body>
 </html>
